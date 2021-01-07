@@ -6,10 +6,73 @@
     font-weight:700;
 }
 
+.align-center > tr > td, th{
+    text-align:center !important;
+}
+
 .nav-link{
     text-align:center !important;
 }
 
+.footer{
+    width:100%;
+    border-top:3px solid rgb(255, 150, 30);
+    position:absolute;
+    bottom:0;
+}
+
+.redes{
+    width:100%;
+    text-align:center;
+}
+
+.fa-whatsapp:hover{
+    color:rgb(37, 190, 37);
+}
+
+.fa-github:hover{
+    color:rgb(65, 63, 63);
+}
+
+.fa-instagram:hover{
+    color: rgb(214, 78, 101);
+}
+
+.fa-linkedin:hover{
+    color: #004182;
+}
+
+.icon-link{
+    color:black;
+}
+
+.fa{
+    padding:4px 9px 10px 9px!important;
+    font-size:20px !important;
+}
+
+.dev{
+    width:100%;
+    text-align:center;
+    font-weight: 700;
+    padding: 5px 0;
+}
+
+.card-border{
+    border: 1px solid rgb(255, 150, 30);
+}
+
+.bg-orange{
+    color: white !important;
+    background: rgb(255, 150, 30) !important;
+}
+
+.title-card{
+    background: rgb(255, 150, 30);
+    color:white !important;
+    text-align:center;
+    font-weight:700;
+}
 
 .navbar{
     background:white !important;
