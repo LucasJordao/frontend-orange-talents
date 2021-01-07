@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.active__link{
+    background: rgb(255, 150, 30);
+    color:white !important;
+    border-radius:10px;
+    font-weight:700;
+}
+
+.nav-link{
+    text-align:center !important;
+}
+
+
+.navbar{
+    background:white !important;
+    box-shadow: 0px 3px 13px -2px rgba(0,0,0,0.36);
+}
