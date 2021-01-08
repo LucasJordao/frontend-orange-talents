@@ -4,10 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "engines": {
+    "node": "12.18.4",
+    "npm": "6.14.6"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +25,7 @@
     "@angular/router": "~11.0.6",
     "angular2-text-mask": "^9.0.0",
     "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "inputmask": "^5.0.5",
     "jquery": "^3.5.1",
