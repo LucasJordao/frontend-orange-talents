@@ -1,1 +1,46 @@
-<p>clientes works!</p>
+<div class="container container-area" style="margin-top:5%;">
+    <div class="row">
+        <!-- Formulário -->
+        <div class="col-md-4">
+            <h2 style="color:rgb(255, 150, 30); margin-top:10%;">Cadastrar cliente</h2>
+            <app-form></app-form>
+        </div>
+
+        <!-- Tabela de clientes -->
+        <div class="col-md-8">
+            <div class="card card-border" style="width: 100%; margin-top:5%;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item title-card" >Lista de Clientes</li>
+                  <li class="list-group-item">
+                    <div class="scrollme">
+                        <table class="table table-responsive">
+                            <thead class="bg-orange align-center">
+                              <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Conta - Digito</th>
+                                <th scope="col">Cpf</th>
+                                <th scope="col">Data de Nascimento</th>
+                                <th scope="col">Banco</th>
+                              </tr>
+                            </thead>
+                            <tbody class="align-center">
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Lucas William Silva Jordão</td>
+                                <td>Lucas@hotmail.com</td>
+                                <td>1111111 - 1</td>
+                                <td>111.111.111-11</td>
+                                <td>12/11/2001</td>
+                                <td>Zup</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+        </div>
+    </div>
+</div>
