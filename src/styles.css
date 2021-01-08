@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+.coluna-form{
+    box-shadow: 0px 1px 20px -10px rgba(0,0,0,0.75);
+    border-radius:10px;   
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+a:hover{
+    text-decoration:none;
+    color: rgb(219, 124, 16);
+}
+
+.table-cliente{
+    width:100% !important;
+    height:360px !important;
+    overflow:auto;
+}
+
 .active__link{
     background: rgb(255, 150, 30);
     color:white !important;
@@ -24,7 +45,6 @@
 
 .scrolly{
     overflow-y:auto;
-    max-height:80%;
 }
 
 .has-error input{
@@ -55,18 +75,30 @@ input:focus, textarea:focus{
     padding-right:6px;
 }
   
-    
+.height-400{
+    height:400px;
+}
 
 .form-cliente{
-    height:70%;
+    height:100%;
+    margin-bottom:20px;
 }
 
 .container-area{
     margin-top:85px !important;
+    margin-bottom:100px;
 }
 
 @media only screen and (max-width:767px){
     form{
+        height:auto !important;
+    }
+
+    .height-400{
+        height:auto !important;
+    }
+    
+    .table{
         height:auto !important;
     }
 

@@ -1,7 +1,7 @@
 <div class="container container-area" style="margin-top:5%;">
     <div class="row">
         <!-- Formulário -->
-        <div class="col-md-4">
+        <div class="col-md-4 coluna-form">
             <h2 style="color:rgb(255, 150, 30); margin-top:10%;">Cadastrar cliente</h2>
             <app-form></app-form>
         </div>
@@ -11,9 +11,9 @@
             <div class="card card-border" style="width: 100%; margin-top:5%;">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item title-card" >Lista de Clientes</li>
-                  <li class="list-group-item">
+                  <li class="list-group-item height-400">
                     <div class="scrollme">
-                        <table class="table table-responsive">
+                        <table class="table table-responsive table-cliente" style="height:90%;">
                             <thead class="bg-orange align-center">
                               <tr>
                                 <th scope="col">Id</th>
@@ -26,14 +26,14 @@
                               </tr>
                             </thead>
                             <tbody class="align-center">
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Lucas William Silva Jordão</td>
-                                <td>Lucas@hotmail.com</td>
-                                <td>1111111 - 1</td>
-                                <td>111.111.111-11</td>
-                                <td>12/11/2001</td>
-                                <td>Zup</td>
+                              <tr *ngFor="let cliente of clientes">
+                                <th scope="row">{{ cliente.id }}</th>
+                                <td>{{ cliente.nome }}</td>
+                                <td>{{ cliente.email }}</td>
+                                <td>{{ cliente.conta }} - {{ cliente.digito }}</td>
+                                <td>{{ cliente.cpf }}</td>
+                                <td>{{ cliente.nascimento }}</td>
+                                <td>{{ cliente.banco.nome }}</td>
                               </tr>
                             </tbody>
                           </table>

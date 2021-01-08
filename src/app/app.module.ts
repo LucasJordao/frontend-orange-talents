@@ -14,6 +14,7 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { BancosService } from './bancos.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     BancosComponent,
     ClientesComponent,
     FooterComponent,
-    FormComponent
+    FormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

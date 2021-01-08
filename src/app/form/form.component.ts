@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { BancosService } from '../bancos.service';
+import { ClientesService } from '../clientes.service';
 
 @Component({
   selector: 'app-form',
@@ -10,8 +11,20 @@ import { BancosService } from '../bancos.service';
 
 export class FormComponent implements OnInit {
 
-  constructor(private bancosService: BancosService, private fb: FormBuilder) { }
+  constructor(private bancosService: BancosService, private fb: FormBuilder, private clientesService: ClientesService) { }
 
+  errors: Array<any> = new Array();
+
+  success = null;
+  
+  erroForm = null;
+  cliente = {
+    nome: null,
+    email: null,
+    cpf: null,
+    nascimento: null,
+    banco: null,
+  };
   bancos: Array<any> = new Array();
 
   ngOnInit(): void {
@@ -36,12 +49,44 @@ export class FormComponent implements OnInit {
     banco: ['', Validators.required],
   })
 
+  formatDate(date: string){
+      let preDate = date == null ? null : date.split('-');
+      let dia = preDate == null ? null : preDate[2].split("T")[0];
+      return preDate == null ? null : dia+ "/"+preDate[1]+"/"+preDate[0];
+  }
+
   onSubmit(){
-    console.warn(this.clienteForm);
+    
+    if(this.clienteForm.valid){
+      this.erroForm = null;
+      this.clienteForm.value["nascimento"] = this.formatDate(this.clienteForm.value["nascimento"]); 
+      this.clienteForm.value["cpf"] = this.clienteForm.value["cpf"].replace(/([^\d])+/gim, '');
+
+      this.clientesService.cadastrarClientes(this.clienteForm.value).subscribe(cliente =>{
+        this.errors = null;
+        this.success = true;
+        this.clienteForm.reset();
+        this.clientesService.addCliente(cliente);
+      }, err => {
+        this.erroForm =true;
+  
+        if(err.error){
+          err.error.lista.forEach(erro => {
+            this.errors.push(erro);
+          });
+        }
+
+        console.log(this.errors);
+      });
+
+    }else{
+      this.erroForm = true;
+    }
   }
 
   validarCpf(c: AbstractControl) : {[key: string] : boolean}{
     let valueInitial : string = c.value;
+    if(valueInitial != null){
     let value = valueInitial.replace(/([^\d])+/gim, '');
       var Soma;
       var Resto;
@@ -62,6 +107,8 @@ export class FormComponent implements OnInit {
       if ((Resto == 10) || (Resto == 11))  Resto = 0;
       if (Resto != parseInt(value.substring(10, 11) ) ) return {"cpfValid": true};
 
+    }
+    
   
     return null;
     

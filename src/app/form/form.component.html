@@ -1,49 +1,78 @@
 <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()" class="form-cliente">
+    <div *ngIf="erroForm" class="alert alert-danger" role="alert">
+      <button type="button" data-dismiss="alert" class="close">
+        <span>&times;</span>
+      </button>
+      <h4 class="alert-heading">Erro no cadastro!</h4>
+      <hr>
+      <p class="mb-0">Verifique os campos abaixo.</p>
+    </div>
+    <div *ngIf="success" class="alert alert-success" role="alert">
+      <button type="button" data-dismiss="alert" class="close">
+        <span>&times;</span>
+      </button>
+      <h5 class="alert-heading">Cadastro realizado!</h5>
+    </div>
     <div class="scrolly">
 
         <!-- Nome -->
         <div class="form-group" [ngClass]="aplicaCssErro('nome')">
             <label for="nome">Nome</label>
-            <input type="nome" formControlName="nome" class="form-control" id="exampleInputPassword1" placeholder="Digite seu nome">
+            <input type="nome" [(ngModel)]="cliente.nome" formControlName="nome" class="form-control" id="exampleInputPassword1" placeholder="Digite seu nome">
             <small *ngIf="verificarError('nome', 'required')">Nome obrigatório</small>
             <small *ngIf="verificarError('nome', 'minlength')">O nome tem que ter no mínimo 5 digitos</small>
             <small *ngIf="verificarError('nome', 'maxlength')">O nome tem que ter no máximo 80 digitos</small>
+            <div class="has-error" *ngFor="let erro of errors">
+              <small *ngIf="erro.campo == 'nome'">{{ erro.mensagem }}</small>
+            </div>
           </div>
 
           <!-- Email -->
           <div class="form-group" [ngClass]="aplicaCssErro('email')">  
             <label for="exampleInputEmail1">Email</label>
-            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu email">
+            <input type="email" [(ngModel)]="cliente.email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu email">
             <small *ngIf="verificarError('email', 'required')">Email obrigatório</small>
             <small *ngIf="verificarRequiredErroInvalido('email', 'email')">Digite um email válido</small>
             <small *ngIf="verificarError('email', 'minlength')">O email tem que ter no mínimo 5 digitos</small>
             <small *ngIf="verificarError('email', 'maxlength')">O email tem que ter no máximo 80 digitos</small>
+            <div class="has-error" *ngFor="let erro of errors">
+              <small *ngIf="erro.campo == 'email'">{{ erro.mensagem }}</small>
+            </div>
             <small id="emailHelp" class="form-text text-muted">Exemplo@hotmail.com</small>
           </div>
 
           <!-- CPF -->
           <div class="form-group"  [ngClass]="aplicaCssErro('cpf')">
               <label for="cpf">CPF</label>
-              <input [textMask]="{mask: cpf}" type="cpf" formControlName="cpf" class="form-control input-cpf" id="exampleInputPassword1" placeholder="Digite seu CPF">
+              <input [textMask]="{mask: cpf}" [(ngModel)]="cliente.cpf" type="cpf" formControlName="cpf" class="form-control input-cpf" id="exampleInputPassword1" placeholder="Digite seu CPF">
               <small *ngIf="verificarError('cpf', 'required')">CPF obrigatório</small>
               <small *ngIf="verificarRequiredErroInvalido('cpf', 'cpfValid')">CPF inválido</small>
+              <div class="has-error" *ngFor="let erro of errors">
+                <small *ngIf="erro.campo == 'cpf'">{{ erro.mensagem }}</small>
+              </div>
           </div>
 
           <!-- Data de Nascimento -->
           <div class="form-group"  [ngClass]="aplicaCssErro('nascimento')">
             <label for="date">Data de nascimento</label>
-            <input formControlName="nascimento" class="form-control" type="date"  id="date">
+            <input formControlName="nascimento" class="form-control" [(ngModel)]="cliente.nascimento" type="date"  id="date">
             <small *ngIf="verificarError('nascimento', 'required')">Preencha a data de nascimento completa</small>
+            <div class="has-error" *ngFor="let erro of errors">
+              <small *ngIf="erro.campo == 'nascimento'">{{ erro.mensagem }}</small>
+            </div>
           </div>
 
           <!-- Banco Select -->
           <div class="form-group"  [ngClass]="aplicaCssErro('banco')">
               <label for="select">Banco</label>
-              <select formControlName="banco" id="select" class="custom-select">
+              <select formControlName="banco" [(ngModel)]="cliente.banco" id="select" class="custom-select">
                 <option selected value>Selecione um Banco</option>
                 <option *ngFor="let banco of bancos" value="{{ banco.id }}">{{  banco.nome }}</option>
               </select>
               <small *ngIf="verificarError('banco', 'required')">Selecione uma opção válida</small>
+              <div class="has-error" *ngFor="let erro of errors">
+                <small *ngIf="erro.campo == 'banco'">{{ erro.mensagem }}</small>
+              </div>
           </div>
           <button type="submit"  [disabled]="!clienteForm" class="btn btn-primary pull-right" style="background:rgb(255, 150, 30); margin:5px; border-color:rgb(255, 150, 30);">Cadastrar</button>
     </div>
