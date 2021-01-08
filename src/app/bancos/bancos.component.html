@@ -12,9 +12,9 @@
                   </tr>
                 </thead>
                 <tbody class="align-center">
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
+                  <tr *ngFor="let banco of bancos">
+                    <th scope="row">{{ banco.id }}</th>
+                    <td>{{ banco.nome }}</td>
                   </tr>
                 </tbody>
               </table>

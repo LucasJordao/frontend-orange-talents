@@ -49,32 +49,13 @@ input:focus, textarea:focus{
     display:block;
 }
 
-/* width */
-.scrolly::-webkit-scrollbar {
-    width: 15px;
-    margin-left:3px;
-  }
 
-  .form-group{
-      padding-right:6px;
-  }
+
+.form-group{
+    padding-right:6px;
+}
   
-  /* Track */
-  .scrolly::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 2px grey; 
-  }
-  
-  /* Handle */
-  .scrolly::-webkit-scrollbar-thumb {
-    background: rgb(255, 150, 30); 
-  }
-  
-  /* Handle on hover */
-  .scrolly::-webkit-scrollbar-thumb:hover {
-    background: rgb(226, 130, 20); 
-  }
-      
-     
+    
 
 .form-cliente{
     height:70%;

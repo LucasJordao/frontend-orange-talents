@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BancosService } from '../bancos.service';
+
 
 @Component({
   selector: 'app-bancos',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BancosComponent implements OnInit {
 
-  constructor() { }
+  bancos: Array<any> = new Array();
+
+  constructor(private bancosService: BancosService) { }
 
   ngOnInit(): void {
+    this.listarBancos();
+  }
+
+  listarBancos(){
+    this.bancosService.listarBancos().subscribe(bancos => {
+      this.bancos = bancos;
+    }, err => {
+      console.log("Erro: "+ err)
+    })
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { BancosService } from '../bancos.service';
 
 @Component({
   selector: 'app-form',
@@ -9,11 +10,22 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 export class FormComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private bancosService: BancosService, private fb: FormBuilder) { }
+
+  bancos: Array<any> = new Array();
 
   ngOnInit(): void {
+    this.listarBancos();
   }
 
+  listarBancos(){
+    this.bancosService.listarBancos().subscribe(bancos => {
+      this.bancos = bancos;
+    }, err => {
+      console.log("Erro: "+ err)
+    })
+  }
+  
   public cpf = [/\d/,/\d/,/\d/,".",/\d/,/\d/,/\d/,".",/\d/,/\d/,/\d/, "-",/\d/,/\d/];
 
   clienteForm = this.fb.group({

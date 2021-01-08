@@ -11,7 +11,9 @@ import { FormComponent } from './form/form.component';
 import { TextMaskModule } from 'angular2-text-mask';
 
 import { ReactiveFormsModule} from '@angular/forms';
+import { BancosService } from './bancos.service';
 
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +27,13 @@ import { ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    TextMaskModule
+    TextMaskModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    BancosService,
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

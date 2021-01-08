@@ -41,8 +41,7 @@
               <label for="select">Banco</label>
               <select formControlName="banco" id="select" class="custom-select">
                 <option selected value>Selecione um Banco</option>
-                <option value="1">Zup</option>
-                <option value="2">Orange Talents</option>
+                <option *ngFor="let banco of bancos" value="{{ banco.id }}">{{  banco.nome }}</option>
               </select>
               <small *ngIf="verificarError('banco', 'required')">Selecione uma opção válida</small>
           </div>
